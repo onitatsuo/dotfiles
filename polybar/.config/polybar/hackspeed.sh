@@ -1,6 +1,6 @@
 #!/bin/sh
 
-KEYBOARD_ID="18"
+KEYBOARD_ID="3"
 
 # cpm: characters per minute
 # wpm: words per minute (1 word = 5 characters)

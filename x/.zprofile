@@ -1,9 +1,9 @@
 # Enviroment variables
 export ZSH="$HOME/.oh-my-zsh"
-export LC_ALL=de_DE.UTF-8
+export LC_ALL=en_US.UTF-8
 export TERMINAL=terminator
 export PAGER=less
-export VISUAL=emacs
+export VISUAL=vim
 export TERM="xterm-256color"
 export GPG_TTY=$(tty)
 
@@ -38,3 +38,8 @@ fi
 
 # Go
 export PATH="$PATH:$HOME/go/bin"
+
+# Japanese input
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx

@@ -4,7 +4,7 @@ fg          = #002636
 bg	    = #e4e4e4
 
 [bar/top]
-monitor = DP2
+monitor = eDP1
 width = 100%
 height = 34
 
@@ -19,16 +19,20 @@ line-size = 16
 
 spacing = 2
 padding-right = 5
-module-margin = 4
+module-margin = 2
 
 font-0 = FuraCode Nerd Font:size=12
+font-1 = MaterialIcons:size=10;0
+font-2 = Termsynu:size=8:antialias=false;-2
+font-3 = FontAwesome:size=10;0
+font-4 = Noto Color Emoji:size=8;0
 
 modules-left = i3
-modules-right = volume wired-network date
+modules-right = battery backlight volume date
 modules-center = title
 
 [bar/bottom]
-monitor = DP2
+monitor = eDP1
 bottom = true
 width = 100%
 height = 30
@@ -39,14 +43,14 @@ foreground = ${bar/top.foreground}
 line-color = ${bar/top.background}
 line-size = 2
 
-spacing = 3
-padding-right = 4
+spacing = 2
+padding-right = 3
 module-margin-left = 0
 module-margin-right = 6
 
 font-0 = FuraCode Nerd Font:size=12
 
-modules-left = powermenu openweathermap ssh ping updates
+modules-left = powermenu openweathermap ssh ping wireless-network updates
 modules-right = cpu memory temperature filesystem
 modules-center = spotify
 
@@ -56,11 +60,11 @@ ws-icon-1 = 
 ws-icon-2 = 
 ws-icon-3 = 
 ws-icon-4 = 
-ws-icon-5 = 
-ws-icon-6 = 
-ws-icon-7 = 
+ws-icon-5 = 
+ws-icon-6 = 
+ws-icon-7 =  
 ws-icon-8 = 
-ws-icon-9 = 
+ws-icon-9 =  
 pin-workspaces = false
 strip-wsnumbers = true
 format = <label-state><label-mode>
@@ -140,25 +144,92 @@ exec = python ~/.config/polybar/spotify.py -f '{artist} - {song}'
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 1
-ramp-0 = 
-ramp-1 = 
-ramp-2  =
+thermal-zone = 0
+warn-temperature = 60
 
-[module/wired-network]
-type = internal/network
-interface = eno1
-interval = 3.0
+label = %temperature%
+format = <ramp> <label>
 
-label-connected =  %{T3}%local_ip%%{T-}
-label-disconnected-foreground = #66
+
+label-warn = %temperature%
+format-warn = <ramp> <label-warn>
+format-warn-padding = 1
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+
+[module/backlight]
+type = internal/xbacklight
+card = intel_backlight
+
+output = eDP1
+
+; Create scroll handlers used to set the backlight value
+; Default: true
+#enable-scroll = false
+
+Vformat = <ramp> <label>
+
+
+enable-scroll = true
+
+
+label =   %percentage%
+
+
+[module/battery]
+type = internal/battery
+
+full-at = 99
+
+battery = BAT0
+adapter = AC
+
+poll-interval = 5
+
+format-charging = <animation-charging>  <label-charging>
+format-discharging = <ramp-capacity>  <label-discharging>
+format-full = <ramp-capacity>  <label-full>
+label-charging = %percentage%
+label-discharging = %percentage%
+label-full = %percentage%
+format-charging-padding = 3
+format-discharging-padding = 3
+format-full-padding = 3
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+
 
 [module/volume]
 type = internal/alsa
 master-mixer = Master
 
-format-volume = <label-volume>
+format-volume = <ramp-volume>  <label-volume>
+format-muted = <label-muted>
+label-volume = %percentage%
 label-muted =  muted
+label-muted-foreground = #aaa
+format-volume-padding = 3
+format-muted-padding = 3
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-headphones-0 = 
 
 [module/powermenu]
 type = custom/menu
@@ -224,5 +295,20 @@ interval = 5
 type = internal/fs
 mount-0 = /
 interval = 10
+
+
+[module/wireless-network]
+type = internal/network
+interface = wlp58s0
+interval = 1.0
+ping-interval = 10
+
+format-disconnected = <label-disconnected>
+label-disconnected=  
+format-disconnected-padding=1
+
+ormat-connected=<label-connected>
+label-connected= %essid%    %downspeed:9:9%  %upspeed:9:9%
+format-connected-padding=1
 
 ; vim:ft=dosini
