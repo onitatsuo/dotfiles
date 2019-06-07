@@ -24,6 +24,9 @@ bindsym $mod+Shift+q kill
 # Start rofi
 bindsym $mod+d exec rofi -show drun
 
+#switch between container tabs
+force_focus_wrapping yes
+
 # Move between windows
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -151,7 +154,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightne
 
 
 #screenshot
-bindsym $mod+Shift+s exec scrot
+bindsym $mod+Shift+s exec flameshot gui #scrot 
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
@@ -226,3 +229,5 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh &amp;
 exec xrandr --dpi 150
 exec xinput set-button-map 12 1 2 3 5 4 6 7 8 9 10 11 12
 exec --no-startup-id fcitx -d
+exec --no-startup-id i3-battery-pudo rm /etc/pacman.d/hooks/doom.hook
+

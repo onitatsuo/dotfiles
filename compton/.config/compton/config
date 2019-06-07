@@ -74,9 +74,9 @@ blur-background-exclude = [
     "window_type = 'desktop'"
 ];
 opacity-rule = [ "80:class_g = 'Terminator'",
-		 "95:class_g = 'Anki'",
+#		 "95:class_g = 'Anki'",
 		 "95:class_g = 'Nautilus'",
-		 "95:class_g = 'Emacs'"
+#		 "95:class_g = 'Emacs'"
  ];
 
 #################################

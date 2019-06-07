@@ -16,13 +16,7 @@ fi
 
 export QT_QPA_PLATFORMTHEME=gtk2
 
-# Ruby gems
-#PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
-#export GEM_HOME=$HOME/.gem
 
-# Rbenv
-#export PATH="$HOME/.rbenv/bin:$PATH"
-#eval "$(rbenv init -)"
 
 # Node.js
 PATH="$HOME/.node_modules/bin:$PATH"
@@ -43,3 +37,18 @@ export PATH="$PATH:$HOME/go/bin"
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export GTK_IM_MODULE=fcitx
+
+# JAVA_HOME 
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+export PATH=$PATH:/usr/lib/jvm/java-8-openjdk/bin
+
+export ANDROID_SDK_ROOT=/opt/android-sdk
+
+# avdmanager, sdkmanager
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin
+
+# adb, logcat
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+
+# emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator

@@ -97,16 +97,23 @@
 
 export ZSH="/home/tatsuo/.oh-my-zsh"
 
-ZSH_THEME="rkj-repos"
+ZSH_THEME="agnoster" #rkj-repos
 
 plugins=(
   git
   zsh-syntax-highlighting
+  archlinux
+  virtualenv
 )
 
 source $ZSH/oh-my-zsh.sh
 
-alias bw="wal -i ~/.config/wall.png -g"
+alias wifi="sudo wifi-menu"
+alias update="sudo pacman -Syuu"
+alias updatey="yay -Syuu"
+alias refresh=".emacs.d/bin/doom refresh"
+#alias doom=".emacs.d/bin/doom -y upgrade; .emacs.d/bin/doom -y update; .emacs.d/bin/doom refresh"
+alias bw="wal -i ~/.config/wall.png "
 alias clock="tty-clock -scD"
 alias dot="cd ~/dotfiles"
 alias screen="ffmpeg -y -f pulse -ac 2 -i default -framerate 25 -video_size 2560:1440 -f x11grab -i :0.0 -c:v libx264rgb -crf 0 -preset ultrafast ~/Videos/out.mp4"
@@ -116,3 +123,9 @@ eval $(thefuck --alias --enable-experimental-instant-mode)
 (cat ~/.cache/wal/sequences &)
 
 source ~/.cache/wal/colors-tty.sh
+
+doomu(){
+.emacs.d/bin/doom -y upgrade
+.emacs.d/bin/doom -y update
+.emacs.d/bin/doom refresh
+}

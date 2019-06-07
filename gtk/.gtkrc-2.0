@@ -1,7 +1,7 @@
 # DO NOT EDIT! This file will be overwritten by LXAppearance.
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
-include "/home/conor/.gtkrc-2.0.mine"
+include "/home/tatsuo/.gtkrc-2.0.mine"
 gtk-theme-name="wal"
 gtk-icon-theme-name="Papirus-Dark"
 gtk-font-name="FuraCode Nerd Font 12"
